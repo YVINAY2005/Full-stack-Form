@@ -5,11 +5,13 @@ const ContactList = ({ contacts, setContacts, fetchContacts }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
+    const API_URL = import.meta.env.VITE_API_URL || '/api';
+
     const handleDelete = async (id) => {
         if (!window.confirm('Are you sure you want to delete this contact?')) return;
         
         try {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/contacts/${id}`);
+            await axios.delete(`${API_URL}/contacts/${id}`);
             setContacts(contacts.filter(contact => contact._id !== id));
         } catch (error) {
             alert('Failed to delete contact');

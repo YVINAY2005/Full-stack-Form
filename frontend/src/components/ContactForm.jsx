@@ -51,6 +51,8 @@ const ContactForm = ({ onContactAdded }) => {
         setIsFormValid(!nameError && !emailError && !phoneError && formData.name && formData.email && formData.phone);
     }, [formData]);
 
+    const API_URL = import.meta.env.VITE_API_URL || '/api';
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isFormValid) return;
@@ -59,7 +61,7 @@ const ContactForm = ({ onContactAdded }) => {
         setStatus({ type: '', message: '' });
 
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/contacts`, formData);
+            const response = await axios.post(`${API_URL}/contacts`, formData);
             setStatus({ type: 'success', message: 'Contact saved successfully!' });
             setFormData({ name: '', email: '', phone: '', message: '' });
             if (onContactAdded) onContactAdded(response.data);

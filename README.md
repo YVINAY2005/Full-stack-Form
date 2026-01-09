@@ -68,6 +68,20 @@ npm run dev
 | `POST` | `/api/contacts` | Create a new contact |
 | `DELETE` | `/api/contacts/:id` | Delete a specific contact |
 
+## 🚀 Deployment (Render)
+
+To deploy this application as a single Web Service on Render:
+
+1. **Create a New Web Service** on Render and link your GitHub repository.
+2. **Settings**:
+   - **Environment**: `Node`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+3. **Environment Variables**:
+   - `NODE_ENV`: `production`
+   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+   - `VITE_API_URL`: (Optional) Leave blank if deploying as a single service.
+
 ## 🎨 UI/UX Highlights
 
 - **Glassmorphism**: Applied to the main form and contact cards for a modern, "frosted glass" look.
